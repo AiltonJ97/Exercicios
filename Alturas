@@ -1,0 +1,55 @@
+package Classes;
+
+import java.util.Locale;
+import java.util.Scanner;
+import Util.Alturas;
+
+
+public class Exercicio4 {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Quantas pessoas serao digitadas? ");
+		int n = sc.nextInt();
+		
+		Alturas[] alt = new Alturas[n];
+		
+		for(int i = 0; i < n; i++) {
+			System.out.println("Dados da "+ (i+1) +"a pessoa: ");
+			System.out.print("Nome: ");
+			sc.nextLine();
+			String nome = sc.nextLine();
+			System.out.print("Idade: ");
+			int idade = sc.nextInt();
+			System.out.print("Altura: ");
+			double altura = sc.nextDouble();
+			alt[i] = new Alturas(nome, idade, altura);
+		}
+		double soma = 0.0;
+		double media = 0.0;
+		
+		for(int i =0; i<n; i++) {
+			soma += alt[i].getAltura();
+		}
+		media = soma / n;
+		System.out.println();
+		System.out.printf("Altura media: %.2f%n", media);
+		System.out.print("Pessoas com menos de 16 anos: ");
+		int cont = 0;
+		for(int i =0; i < n; i++) {
+			if (alt[i].getIdade() < 16){
+				cont += 1;
+			}
+		}
+		System.out.println((cont * 100)/n+"%");
+		for(int i = 0; i < n; i++) {
+			if (alt[i].getIdade() < 16){
+				System.out.println(alt[i].getNome());
+			}
+		}
+		sc.close();
+	}
+
+}
