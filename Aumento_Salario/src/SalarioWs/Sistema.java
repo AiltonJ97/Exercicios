@@ -16,9 +16,9 @@ public class Sistema {
 		System.out.println("Quantas pessoas deseja registrar? ");
 		int n = sc.nextInt();
 
-		/* Dados[] ds = new Dados[n]; */
 		List<Dados> dd = new ArrayList<>();
-
+		
+		//Inserindo dados dos funcionarios.
 		for (int i = 0; i < n; i++) {
 			System.out.println("Emplyoee #" + (i + 1));
 			sc.nextLine();
@@ -32,12 +32,14 @@ public class Sistema {
 			dd.add(new Dados(id, nome, salario));
 		}
 		
+		//Recebendo id do funcionario.
 		System.out.println();
 		System.out.print("Enter the employee id that will have salary increase: ");
 		int idsalary = sc.nextInt();
 
 		Integer pos = position(dd, idsalary);
-
+		
+		//Buscando funcionario.
 		if (pos == null) {
 			System.out.println("This id does not exist!");
 		}
@@ -48,6 +50,7 @@ public class Sistema {
 			dd.get(pos).newSalary(percent);
 		}
 		
+		//Imprimindo novo salario.
 		System.out.println();
 		System.out.println("List of employees: ");
 		for (Dados x : dd) {
